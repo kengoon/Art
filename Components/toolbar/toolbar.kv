@@ -1,0 +1,35 @@
+<ToolBar>:
+    orientation: "vertical"
+    adaptive_height: True
+    MDBoxLayout:
+        adaptive_height: True
+        spacing: dp(10)
+        padding: dp(5)
+        MDIconButton:
+            icon: root.icon_left
+            on_release: root.button_callback()
+        MDLabel:
+            text: root.title
+            shorten: True
+            font_style: "H5"
+            shorten_from: "right"
+    MDSeparator
+
+
+<ImageIconToolBar>:
+    orientation: "vertical"
+    adaptive_height: True
+    MDBoxLayout:
+        adaptive_height: True
+        spacing: dp(10)
+        padding: dp(5)
+        RoundImageButton:
+            source: root.icon_left
+            on_release: root.button_callback()
+        MDLabel:
+            text: root.title
+            shorten: True
+            shorten_from: "right"
+            font_style: "H3"
+    MDSeparator
+

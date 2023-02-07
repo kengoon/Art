@@ -1,0 +1,149 @@
+<RecycleContent>:
+    size_hint_y: None
+    _size: 0, 0
+    size: self._size
+    orientation: "vertical"
+    on_release: print(self.parent.children)
+    on_size:
+#        print(self.height, b.height)
+        try: root.parent.root.update_post_size(root.index, b.height)
+        except AttributeError: pass
+    MDBoxLayout:
+        id: b
+        padding: dp(10)
+        spacing: dp(10)
+        adaptive_height: True
+        on_size:
+            try: root.parent.root.update_post_size(root.index, self.height)
+            except AttributeError: pass
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+            size_hint: None, None
+            width: ic.width
+            height: box.height
+            MDIcon:
+                id: ic
+                icon: root.profile_image
+                font_size: "50sp"
+                color: app.theme_cls.primary_color
+        MDBoxLayout:
+            id: box
+            padding: dp(5)
+            orientation: "vertical"
+            spacing: dp(10)
+            adaptive_height: True
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                MDLabel:
+                    adaptive_height: True
+                    bold: True
+                    font_size: "18sp"
+                    shorten: True
+                    shorten_from: "right"
+                    text: root.poster_name
+                MDLabel:
+                    adaptive_height: True
+                    color: 0, 0, 0, .5
+                    font_size: "16sp"
+                    shorten_from: "right"
+                    shorten: "True"
+                    text: root.poster_username
+            MDLabel:
+                adaptive_height: True
+                text: root.post_text
+                font_size: "17sp"
+                color: 0, 0, 0, .8
+    MDSeparator
+
+
+<RecycleTask>:
+    MDBoxLayout:
+        padding: dp(10)
+        MDBoxLayout:
+            padding: dp(10)
+            spacing: dp(10)
+            md_bg_color: 1, 0, 0, 1
+            AnchorLayout:
+                anchor_x: "left"
+                anchor_y: "top"
+                MDIcon:
+                    id: ic
+                    icon: root.profile_image
+                    font_size: "50sp"
+                    color: app.theme_cls.primary_color
+            MDBoxLayout:
+                id: box
+                padding: dp(5)
+                orientation: "vertical"
+                spacing: dp(10)
+                adaptive_height: True
+                MDBoxLayout:
+                    orientation: "vertical"
+                    adaptive_height: True
+                    MDLabel:
+                        adaptive_height: True
+                        bold: True
+                        font_size: "18sp"
+                        shorten: True
+                        shorten_from: "right"
+                        text: root.poster_name
+                    MDLabel:
+                        adaptive_height: True
+                        color: 0, 0, 0, .5
+                        font_size: "16sp"
+                        shorten_from: "right"
+                        shorten: "True"
+                        text: root.poster_username
+                MDLabel:
+                    adaptive_height: True
+                    text: root.post_text
+                    font_size: "17sp"
+                    color: 0, 0, 0, .8
+            Image
+
+    MDSeparator:
+        orientation: "vertical"
+
+<RecycleBeggar>:
+    orientation: "vertical"
+    padding: 0, 0, dp(50), 0
+    MDBoxLayout:
+        padding: dp(10)
+        spacing: dp(10)
+        MDIcon:
+            id: ic
+            icon: root.profile_image
+            font_size: "80sp"
+            color: app.theme_cls.primary_color
+        MDBoxLayout
+            orientation: "vertical"
+            AnchorLayout:
+                anchor_x: "left"
+                anchor_y: "center"
+                MDLabel:
+                    text: root.profile_name
+                    adaptive_height: True
+                    bold: True
+                    font_size: "18sp"
+                    shorten: True
+                    shorten_from: "right"
+            MDLabel:
+                adaptive_size: True
+                radius: dp(12)
+                text: root.tag
+                padding: dp(20), dp(5)
+                font_size: "13sp"
+                color: 1, 1, 1, 1
+                canvas.before:
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        texture: Gradient.horizontal(get_color_from_hex("FF9800"), get_color_from_hex("FF6D00"))
+                        radius: self.radius
+
+    MDBoxLayout:
+        adaptive_height: True
+        padding: dp(100), 0, 0, 0
+        MDSeparator

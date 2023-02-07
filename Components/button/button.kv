@@ -1,0 +1,77 @@
+<RoundImageButton>
+    size_hint: None, None
+    size: dp(50), dp(50)
+    canvas.before:
+        Color:
+            rgba: 1,1,1,1
+        Ellipse:
+            size: self.size
+            pos: self.pos
+            source: root.source
+
+<OutlineIconButton>:
+    radius: "15dp"
+    size_hint: None, None
+    size: [max(dp(48) - sp(24), 0) + sp(24)] * 2
+    md_bg_color: 1, 1, 1, 1
+    # elevation: 0.01
+    ripple_behavior: True
+    RelativeLayout:
+        MDIcon:
+            icon: root.icon
+            theme_text_color: root.theme_icon_color
+            text_color: root.icon_color
+            font_name: root.font_style
+            font_size: "30sp"
+            pos_hint: {'center': [.5, .5]}
+
+<OutlineImageButton>:
+    radius: "15dp"
+    size_hint: None, None
+    size: [max(dp(48) - sp(24), 0) + sp(24)] * 2
+    md_bg_color: 1, 1, 1, 1
+    elevation: 0.01
+    ripple_behavior: True
+    FitImage:
+        radius: "15dp"
+        source: root.source
+
+<RaisedButton>:
+    # adaptive_width: True
+    # adaptive_height: True
+    size_hint: None, None
+    size: self.minimum_size
+    radius: "5dp"
+    md_bg_color: app.theme_cls.primary_color
+    ripple_behavior: True
+    orientation: "vertical"
+    elevation: 10
+    shadow_color: self.md_bg_color
+    shadow_offset: 0, -10
+    shadow_softness: 50
+    MDLabel:
+        adaptive_size: True
+        halign: "center"
+        text: root.text
+        text_color: root.text_color
+        padding: root.label_padding
+        pos_hint: {"center_x": .5}
+        theme_text_color: root.theme_text_color
+
+<ListButton>:
+    size_hint_y: None
+    height: "100dp"
+    spacing: "20dp"
+    OutlineIconButton:
+        icon: root.icon
+        theme_icon_color: "Custom"
+        icon_color: 1, 1, 1, 1
+        md_bg_color: root.icon_bg_color
+        ripple_behavior: False
+        pos_hint: {"center_y": .5}
+    MDLabel:
+        adaptive_height: True
+        text: root.text
+        font_name: "RobotoLight"
+        font_size: "30sp"
+        pos_hint: {"center_y": .5}

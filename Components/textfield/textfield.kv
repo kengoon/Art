@@ -1,0 +1,59 @@
+<TextField>:
+#    md_bg_color: get_color_from_hex("#F1F1F1")
+    radius: dp(8)
+    adaptive_height: True
+    size_hint_y: None
+    height: self.minimum_height
+    padding: 0, "5dp"
+    field: field
+    elevation: 5
+    shadow_offset: 0, -10
+    shadow_softness: 50
+    MDIcon:
+        icon: root.icon
+        pos_hint: {"center_y": .5}
+        padding_x: dp(10)
+        adaptive_size: True
+        color: app.theme_cls.primary_color
+    TextInput:
+        id: field
+        text: root.text
+        write_tab: root.write_tab
+        hint_text: root.hint_text
+        size_hint_y: None
+        height: self.minimum_height
+        background_active: ""
+        background_color: 0, 0, 0, 0
+        background_normal: ""
+        font_size: root.font_size
+        cursor_color: app.theme_cls.primary_color
+        multiline: root.multiline
+        input_filter: root.input_filter
+        input_type: root.input_type
+        password: root.password
+        pos_hint: {"center_y": .5}
+        on_text_validate: root.text_validate_callback()
+        on_text: root.text = self.text
+        on_focus: root.focus = args[1]
+    MDIconButton:
+        icon: root.button_icon
+        theme_icon_color: "Custom"
+        icon_color: app.theme_cls.primary_color
+        pos_hint: {"center_x": .5}
+        on_release: root.button_callback(self)
+
+
+<TagTextField>:
+    adaptive_height: True
+    spacing: "10dp"
+    orientation: "vertical"
+    MDLabel:
+        text: root.tag
+        adaptive_height: True
+    TextField:
+        hint_text: root.hint_text
+        font_size: "20sp"
+        line_width: 1.5
+        radius: "15dp"
+        line_color: .7, .7, .7, 1
+        on_focus: self.line_color = app.theme_cls.primary_color if args[1] else [.7, .7, .7, 1]

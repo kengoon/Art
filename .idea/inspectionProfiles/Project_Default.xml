@@ -1,0 +1,98 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyCompatibilityInspection" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="ourVersions">
+        <value>
+          <list size="6">
+            <item index="0" class="java.lang.String" itemvalue="2.7" />
+            <item index="1" class="java.lang.String" itemvalue="3.5" />
+            <item index="2" class="java.lang.String" itemvalue="3.7" />
+            <item index="3" class="java.lang.String" itemvalue="3.8" />
+            <item index="4" class="java.lang.String" itemvalue="3.10" />
+            <item index="5" class="java.lang.String" itemvalue="3.11" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="10">
+            <item index="0" class="java.lang.String" itemvalue="Django" />
+            <item index="1" class="java.lang.String" itemvalue="requests" />
+            <item index="2" class="java.lang.String" itemvalue="jnius" />
+            <item index="3" class="java.lang.String" itemvalue="kivy" />
+            <item index="4" class="java.lang.String" itemvalue="kivymd" />
+            <item index="5" class="java.lang.String" itemvalue="android" />
+            <item index="6" class="java.lang.String" itemvalue="pywin32" />
+            <item index="7" class="java.lang.String" itemvalue="sqlalchemy-access" />
+            <item index="8" class="java.lang.String" itemvalue="pypiwin32" />
+            <item index="9" class="java.lang.String" itemvalue="pyrebase" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E401" />
+          <option value="E402" />
+          <option value="E712" />
+          <option value="E127" />
+          <option value="E731" />
+          <option value="E722" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+          <option value="N806" />
+          <option value="N802" />
+          <option value="N812" />
+          <option value="N814" />
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="all" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyTypeCheckerInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="main.android" />
+          <option value="android_webview.android" />
+          <option value="notification.android_notification.android" />
+          <option value="libs.libpy.widgets.android" />
+          <option value="jnius.JavaException" />
+          <option value="jnius.cast" />
+          <option value="kvdroid.jimplement.notification.android" />
+          <option value="pyandroid.jimplement.notification.*" />
+          <option value="kvdroid.tools.notification.android" />
+          <option value="demo.android_native_ui.main.android" />
+          <option value="kvdroid.app.*" />
+          <option value="kivymd.app.MDApp.dialog" />
+          <option value="View.DetailScreen.detail_screen.android" />
+          <option value="kivy.properties" />
+          <option value="Components.layout.layout.ResponsiveLayout.register_event_type" />
+          <option value="Components.layout.layout.ResponsiveLayout.clear_widgets" />
+          <option value="Components.layout.layout.ResponsiveLayout.add_widget" />
+          <option value="Components.layout.layout.ResponsiveLayout.dispatch" />
+          <option value="hover_behavior.HoverBehavior.*" />
+          <option value="threading._active" />
+          <option value="grs.models.IssueReport.object" />
+          <option value="ccg.models.Home.DoesNotExist" />
+          <option value="grs.models.Jobs.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

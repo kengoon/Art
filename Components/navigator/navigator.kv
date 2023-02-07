@@ -1,0 +1,24 @@
+<BoxIconButton>:
+    orientation: "vertical"
+    adaptive_height: True
+    icon_widget: icon
+    MDIconButton:
+        id: icon
+        icon: root.icon
+        pos_hint: root.icon_pos_hint
+        theme_icon_color: "Custom"
+        icon_color: root.icon_color
+        disabled: root.disabled_icon
+        disabled_color: root.icon_color
+        ripple_alpha: 0.1
+        on_release:
+            root.ping_parent(self)
+            root.button_callback()
+
+<Navigator>:
+    adaptive_height: True
+    orientation: "vertical"
+    MDBoxLayout:
+        id: nav
+        adaptive_height: True
+        padding: dp(5)

@@ -1,0 +1,15 @@
+<Dot>
+    size_hint: None, None
+    size: dp(10), dp(2)
+    pos_hint: {'center_y': .5}
+    bg_color: self.theme_cls.primary_color
+
+    canvas:
+        Color:
+            rgba:
+                self.bg_color\
+                if root.active else root.color_round_not_active
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(2)]

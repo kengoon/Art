@@ -1,0 +1,60 @@
+<ImageFrame>:
+    padding: "20dp", 0, "20dp", 0
+    Card:
+        radius: "20dp"
+        md_bg_color: 0, 0, 0, .7
+        RelativeLayout:
+            FitImage:
+                id: source
+                source: root.source
+                radius: "20dp"
+            MDBoxLayout:
+                adaptive_height: True
+                padding: "20dp"
+                pos_hint: {"top": 1}
+                spacing: "20dp"
+                OutlineImageButton:
+                    source: "assets/images/DSC-0154.jpg"
+                MDLabel:
+                    id: name
+                    adaptive_height: True
+                    text: root.name
+                    font_style: "H6"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    pos_hint: {"center_y": .5}
+            MDBoxLayout:
+                adaptive_height: True
+                padding: "20dp"
+                spacing: "40dp"
+                md_bg_color: 0, 0, 0, .5
+                radius: 0, 0, "20dp", "20dp"
+                MDBoxLayout:
+                    adaptive_height: True
+                    spacing: "5dp"
+                    MDIconButton:
+                        icon: "heart-l"
+                        theme_icon_color: "Custom"
+                        icon_color: 1, 1, 1, 1
+                        on_release:
+                            self.icon = "heart-f" if self.icon == "heart-l" else "heart-l"
+                            likes.text = f"{int(likes.text) + 1 if self.icon == 'heart-f' else int(likes.text) -1}"
+                            root.likes_callback()
+                    MDLabel:
+                        id: likes
+                        text: root.likes
+                        color: 1, 1, 1, 1
+                        on_text: root.update_numbers("likes", args[1])
+                MDBoxLayout:
+                    adaptive_height: True
+                    spacing: "5dp"
+                    MDIconButton:
+                        icon: "chat-teardrop-text-d"
+                        theme_icon_color: "Custom"
+                        icon_color: 1, 1, 1, 1
+                        on_release:
+                            root.comments_callback()
+                    MDLabel:
+                        id: comments
+                        text: root.comments
+                        color: 1, 1, 1, 1
