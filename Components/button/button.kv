@@ -10,11 +10,11 @@
             source: root.source
 
 <OutlineIconButton>:
-    radius: "15dp"
+    radius: "10dp"
     size_hint: None, None
     size: [max(dp(48) - sp(24), 0) + sp(24)] * 2
-    md_bg_color: 1, 1, 1, 1
-    # elevation: 0.01
+    shadow_offset: 0, -10
+    shadow_softness: 50
     ripple_behavior: True
     RelativeLayout:
         MDIcon:

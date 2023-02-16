@@ -17,9 +17,12 @@ from kivy.metrics import dp
 from kivy.uix.modalview import ModalView
 from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
-
 from View.screens import screens
+from libs import patches  # noqa
 from Model.database import DataBase
+from Components.factory import register_factory
+
+register_factory()
 
 
 class Art(MDApp):
@@ -28,6 +31,9 @@ class Art(MDApp):
         Builder.load_file("imports.kv")
         # This is the screen manager that will contain all the screens of your
         # application.
+        self.theme_cls.primary_palette = "Brown"
+        self.theme_cls.primary_hue = "A700"
+        self.theme_cls.material_style = "M3"
         self.root = MDScreenManager()
         self.database = DataBase()
         spinner = Factory.MDSpinner(line_width=dp(1.5))
@@ -41,7 +47,7 @@ class Art(MDApp):
             on_dismiss=lambda _: setattr(spinner, "active", False)
         )
         self.dialog.add_widget(spinner)
-        self.add_screen("splash screen", first=True)
+        self.add_screen("login screen", first=True)
 
     def add_screen(self, name_screen, switch=True, first=True):
         if first:
@@ -62,6 +68,9 @@ class Art(MDApp):
             self.root.current = name_screen
         if not first:
             self.dialog.dismiss()
+
+    def on_stop(self):
+        self.root.children[0].children[0].children[0].export_to_png("screenshot.png")
 
 
 Art().run()

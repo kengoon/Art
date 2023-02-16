@@ -11,9 +11,9 @@ from View.base_screen import BaseScreenView
 class LoginScreenView(MDResponsiveLayout, BaseScreenView):
     def __init__(self, **kw):
         super().__init__(**kw)
-        self.mobile_view = MobileScreenView()
-        self.tablet_view = TabletScreenView()
-        self.desktop_view = DesktopScreenView()
+        self.mobile_view = MobileScreenView
+        self.tablet_view = TabletScreenView
+        self.desktop_view = DesktopScreenView
 
     def model_is_changed(self) -> None:
         """

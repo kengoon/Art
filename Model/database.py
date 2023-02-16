@@ -3,7 +3,7 @@ from __future__ import annotations
 import socket
 
 import requests
-from firebase import firebase
+#from firebase import firebase
 
 
 def get_connect(func, host="8.8.8.8", port=53, timeout=3):
@@ -35,9 +35,9 @@ class DataBase:
         # Address for users collections.
         self.USER_DATA = "Userdata"
         # RealTime Database attribute.
-        self.real_time_firebase = firebase.FirebaseApplication(
-            self.DATABASE_URL, None
-        )
+        # self.real_time_firebase = firebase.FirebaseApplication(
+        #     self.DATABASE_URL, None
+        # )
 
     @get_connect
     def get_data_from_collection(self, name_collection: str) -> dict | bool:

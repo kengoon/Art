@@ -1,1 +1,80 @@
 <MobileScreenView>
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "30dp", "30dp", "30dp", "40dp"
+        spacing: "40dp"
+        adaptive_height: True
+        MDLabel:
+            text:
+                f"[b][size={int(sp(30))}]Hello Again![/b][/size]\n\n"\
+                "Welcome back you've\nbeen missed!"
+            halign: "center"
+            markup: True
+            font_size: "20sp"
+            adaptive_height: True
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_height: True
+            spacing: "20dp"
+            TextField:
+                radius: "10dp"
+                hint_text: "Enter username"
+            TextField:
+                radius: "10dp"
+                hint_text: "Password"
+                button_icon: "eye"
+            MDTextButton:
+                bold: True
+                color: 0, 0, 0, .5
+                text: "Recover Password"
+                pos_hint: {"right": 1}
+        RaisedButton:
+            text: "Sign In"
+            size_hint_x: 1
+            label_padding: "20dp", "20dp"
+            radius: "10dp"
+        MDBoxLayout:
+            adaptive_height: True
+            spacing: "10dp"
+            padding: "10dp", 0
+            Separator
+            MDLabel:
+                text: "Or continue with"
+                adaptive_size: True
+                font_style: "Caption"
+                halign: "center"
+            Separator:
+                colors: [[0, 0, 0, 1], [0, 0, 0, 0]]
+        MDBoxLayout:
+            adaptive_height: True
+            spacing: "30dp"
+            padding: "15dp", 0
+            OutlineIconButton:
+                radius: "10dp"
+                icon: "google"
+                size_hint_x: 1
+                theme_icon_color: "Custom"
+                icon_color: "red"
+                line_color: 1, 1, 1, 1
+                elevation: 8
+            OutlineIconButton:
+                radius: '10dp'
+                icon: "apple"
+                size_hint_x: 1
+                line_color: 1, 1, 1, 1
+                elevation: 8
+            OutlineIconButton:
+                radius: "10dp"
+                icon: "facebook"
+                size_hint_x: 1
+                theme_icon_color: "Custom"
+                icon_color: "blue"
+                line_color: 1, 1, 1, 1
+                elevation: 8
+        MDLabel:
+            halign: "center"
+            adaptive_height: True
+            text: "Not a memeber? [b][color=2196F3]Register Now[/color][/b]"
+            markup: True
+            font_style: "Caption"
+

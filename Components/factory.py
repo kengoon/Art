@@ -4,6 +4,8 @@ register = Factory.register
 
 
 def register_factory():
+    register("Blur", module="Components.effectwidget")
+    register("Separator", module="Components.separator")
     register("Card", module="Components.card")
     register("Dot", module="Components.dot")
     register("DotSpinner", module="Components.spinner")
