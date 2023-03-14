@@ -75,3 +75,21 @@
         font_name: "RobotoLight"
         font_size: "30sp"
         pos_hint: {"center_y": .5}
+
+<BottomNavigationButton>:
+    size_hint: None, None
+    size: "82dp", "48dp"
+    md_bg_color: self.theme_cls.primary_color
+    #spacing: "5dp"
+    # pos_hint: {"center": [.5, .1]}
+    radius: "10dp"
+    elevation: 10
+    shadow_color: self.md_bg_color
+    shadow_offset: 0, -10
+    shadow_softness: 40
+    RelativeLayout:
+        MDIcon:
+            pos_hint: {"center": [.5, .5]}
+            icon: root.icon
+            color: 1, 1, 1, 1
+

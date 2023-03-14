@@ -1,8 +1,11 @@
 <ImageFrame>:
-    padding: "20dp", 0, "20dp", 0
-    Card:
+    padding: "20dp", "20dp"
+    MDCard:
         radius: "20dp"
         md_bg_color: 0, 0, 0, .7
+        elevation: 1
+        # shadow_offset: 0, 0
+        #shadow_softness: 30
         RelativeLayout:
             FitImage:
                 id: source
@@ -12,20 +15,22 @@
                 adaptive_height: True
                 padding: "20dp"
                 pos_hint: {"top": 1}
-                spacing: "20dp"
+                spacing: "10dp"
                 OutlineImageButton:
-                    source: "assets/images/DSC-0154.jpg"
+                    source: "assets/1.jpg"
+                    radius: "15dp"
+                    elevation: 1
                 MDLabel:
                     id: name
                     adaptive_height: True
                     text: root.name
-                    font_style: "H6"
+                    font_style: "Caption"
                     theme_text_color: "Custom"
                     text_color: 1, 1, 1, 1
                     pos_hint: {"center_y": .5}
             MDBoxLayout:
                 adaptive_height: True
-                padding: "20dp"
+                padding: "20dp", 0
                 spacing: "40dp"
                 md_bg_color: 0, 0, 0, .5
                 radius: 0, 0, "20dp", "20dp"
@@ -58,3 +63,70 @@
                         id: comments
                         text: root.comments
                         color: 1, 1, 1, 1
+
+
+<ImageCard>:
+    padding: "20dp", "20dp", "10dp", "20dp"
+    orientation: "vertical"
+    spacing: "5dp"
+    StencilCard:
+        radius: "10dp"
+        RelativeLayout:
+            FitImage:
+                source: root.source
+            # MDWidget:
+            #     md_bg_color: 0, 0, 0, .6
+            # MDLabel:
+            #     text: root.text
+            #     color: 1, 1, 1, 1
+            #     halign: "center"
+            #     adaptive_height: True
+            #     shorten: True
+            #     shorten_from: "right"
+            #     padding: "10dp", "10dp"
+            MDLabel:
+                text: root.name
+                adaptive_height: True
+                halign: "center"
+                shorten: True
+                shorten_from: "right"
+                color: 1, 1, 1, 1
+                padding: "10dp", "10dp"
+#    MDLabel:
+#        text: root.name
+#        adaptive_height: True
+#        halign: "center"
+#        shorten: True
+#        shorten_from: "right"
+#    MDLabel:
+#        text: root.date
+#        adaptive_height: True
+#        halign: "center"
+#        font_style: "Caption"
+#        color: 0, 0, 0, .3
+
+
+<TextFrame>:
+    MDLabel:
+        color: 1, 1, 1, 1
+        halign: "center"
+        text: 'iSaid, "' + root.text + '"'
+        padding: "20dp", "20dp"
+        font_style: "H5"
+    MDBoxLayout:
+        adaptive_height: True
+        padding: "20dp"
+        pos_hint: {"top": 1}
+        spacing: "10dp"
+        OutlineImageButton:
+            source: root.sayer_image
+            radius: "15dp"
+            elevation: 1
+        MDLabel:
+            id: name
+            adaptive_height: True
+            text: root.sayer_name
+            font_style: "Caption"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            pos_hint: {"center_y": .5}

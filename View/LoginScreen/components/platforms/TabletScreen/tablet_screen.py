@@ -5,5 +5,5 @@ from kivy.lang import Builder
 Builder.load_file(join(dirname(__file__), "tablet_screen.kv"))
 
 
-class TabletScreenView(MDScreen):
+class LoginTabletScreenView(MDScreen):
     pass

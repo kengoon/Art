@@ -27,10 +27,16 @@ MDResponsiveLayout.set_screen = _set_screen
 
 @classmethod
 def _get_instance(cls):
-    if not cls._layout:
-        cls._layout = cls()
-    return cls._layout
+    if not cls.__widget:
+        cls.__widget = cls()
+    return cls.__widget
 
 
-MDScreen._layout = None
+def _on_enter(self, *args):
+    if self.children and isinstance(self.children[0], MDScreen):
+        self.children[0].dispatch("on_enter", *args)
+
+
+MDScreen.__widget = None
 MDScreen.get_instance = _get_instance
+MDScreen.on_enter = _on_enter

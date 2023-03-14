@@ -18,10 +18,12 @@ from kivy.uix.modalview import ModalView
 from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
 from View.screens import screens
-from libs import patches  # noqa
 from Model.database import DataBase
 from Components.factory import register_factory
+from libs import replace_kivymd_icons
+from Components.button import win
 
+replace_kivymd_icons()
 register_factory()
 
 
@@ -49,13 +51,13 @@ class Art(MDApp):
         self.dialog.add_widget(spinner)
         self.add_screen("login screen", first=True)
 
-    def add_screen(self, name_screen, switch=True, first=True):
+    def add_screen(self, name_screen, switch=True, first=False):
         if first:
             self.load_screen(name_screen, switch, first)
             return
         if not self.root.has_screen(name_screen):
             self.dialog.open()
-            Clock.schedule_once(lambda _: self.load_screen(name_screen, switch, first))
+            Clock.schedule_once(lambda _: self.load_screen(name_screen, switch, first), 1)
 
     def load_screen(self, name_screen, switch, first):
         Builder.load_file(screens[name_screen]["kv"])
@@ -69,8 +71,33 @@ class Art(MDApp):
         if not first:
             self.dialog.dismiss()
 
-    def on_stop(self):
-        self.root.children[0].children[0].children[0].export_to_png("screenshot.png")
+    def on_start(self):
+        win.create_bnb(icons=[
+            {
+                "icon": "house-f",
+                "icon_variant": "house",
+                "active": True,
+                "on_release": print
+            },
+            {
+                "icon": "image-f",
+                "icon_variant": "image",
+                "on_release": print
+            },
+            {
+                "icon": "briefcase-simple-f",
+                "icon_variant": "briefcase-simple",
+                "on_release": print
+            },
+            {
+                "icon": "user-f",
+                "icon_variant": "user",
+                "on_release": print
+            },
+        ], icon="squares-four")
+
+    # def on_stop(self):
+    #     self.root.children[0].children[0].export_to_png("screenshot.png")
 
 
 Art().run()

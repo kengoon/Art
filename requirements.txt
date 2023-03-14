@@ -1,4 +1,4 @@
-https://github.com/kivymd/KivyMD/archive/refs/heads/master.zip
+kivymd@https://github.com/kivymd/KivyMD/archive/refs/heads/master.zip
 multitasking
-https://github.com/nhorvath/Pyrebase4/archive/refs/heads/master.zip
+pyrebase4@https://github.com/nhorvath/Pyrebase4/archive/refs/heads/master.zip
 kivygradient

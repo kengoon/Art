@@ -1,8 +1,8 @@
-<MobileScreenView>
+<LoginMobileScreenView>
     MDBoxLayout:
         orientation: "vertical"
-        padding: "30dp", "30dp", "30dp", "40dp"
-        spacing: "40dp"
+        padding: "20dp"
+        spacing: "30dp"
         adaptive_height: True
         MDLabel:
             text:
@@ -33,6 +33,7 @@
             size_hint_x: 1
             label_padding: "20dp", "20dp"
             radius: "10dp"
+            on_release: app.add_screen("home screen")
         MDBoxLayout:
             adaptive_height: True
             spacing: "10dp"
@@ -57,12 +58,14 @@
                 icon_color: "red"
                 line_color: 1, 1, 1, 1
                 elevation: 8
+                font_style: self.md_font
             OutlineIconButton:
                 radius: '10dp'
                 icon: "apple"
                 size_hint_x: 1
                 line_color: 1, 1, 1, 1
                 elevation: 8
+                font_style: self.md_font
             OutlineIconButton:
                 radius: "10dp"
                 icon: "facebook"
@@ -71,6 +74,7 @@
                 icon_color: "blue"
                 line_color: 1, 1, 1, 1
                 elevation: 8
+                font_style: self.md_font
         MDLabel:
             halign: "center"
             adaptive_height: True

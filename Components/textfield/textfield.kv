@@ -11,6 +11,7 @@
     shadow_softness: 50
     MDIcon:
         icon: root.icon
+        font_name: root.icon_font_style
         pos_hint: {"center_y": .5}
         padding_x: dp(10)
         adaptive_size: True
@@ -38,7 +39,8 @@
     MDIconButton:
         icon: root.button_icon
         theme_icon_color: "Custom"
-        icon_color: app.theme_cls.primary_color
+        font_name: root.icon_font_style
+        icon_color: self.theme_cls.primary_color
         pos_hint: {"center_x": .5}
         on_release: root.button_callback(self)
 

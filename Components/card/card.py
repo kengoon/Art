@@ -14,8 +14,14 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.properties import VariableListProperty
 from Components import path
 from kivy.lang import Builder
+from kivymd.uix.card import MDCard
+from kivymd.uix.behaviors import StencilBehavior
 
 Builder.load_file(str(path / "card" / "card.kv"))
+
+
+class StencilCard(MDCard, StencilBehavior):
+    pass
 
 
 class Card(RectangularRippleBehavior, ButtonBehavior, MDBoxLayout):

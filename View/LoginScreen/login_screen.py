@@ -1,9 +1,9 @@
 from kivymd.uix.responsivelayout import MDResponsiveLayout
 
 from View.LoginScreen.components import (
-    MobileScreenView,
-    TabletScreenView,
-    DesktopScreenView,
+    LoginMobileScreenView,
+    LoginTabletScreenView,
+    LoginDesktopScreenView,
 )
 from View.base_screen import BaseScreenView
 
@@ -11,9 +11,9 @@ from View.base_screen import BaseScreenView
 class LoginScreenView(MDResponsiveLayout, BaseScreenView):
     def __init__(self, **kw):
         super().__init__(**kw)
-        self.mobile_view = MobileScreenView
-        self.tablet_view = TabletScreenView
-        self.desktop_view = DesktopScreenView
+        self.mobile_view = LoginMobileScreenView
+        self.tablet_view = LoginTabletScreenView
+        self.desktop_view = LoginDesktopScreenView
 
     def model_is_changed(self) -> None:
         """

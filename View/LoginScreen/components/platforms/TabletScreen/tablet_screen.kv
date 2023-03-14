@@ -1,8 +1,7 @@
-<TabletScreenView>:
+<LoginTabletScreenView>:
     MDBoxLayout:
         padding: "10dp"
         radius: "20dp"
-        md_bg_color: gcfh("#F1F1F1")
         Blur:
             effects: (HorizontalBlurEffect(size=9), VerticalBlurEffect(size=6))
             radius: "20dp"
@@ -77,9 +76,11 @@
                         line_color: 1, 1, 1, 1
                         md_bg_color: 1, 1, 1, 0
                         hover_elevate: True
+                        font_style: self.md_font
                         icon_color: "red"
                         theme_icon_color: "Custom"
                     OutlineIconButton:
+                        font_style: self.md_font
                         icon: "apple"
                         size_hint_x: 1
                         line_color: 1, 1, 1, 1
@@ -87,6 +88,7 @@
                         hover_elevate: True
                     OutlineIconButton:
                         icon: "facebook"
+                        font_style: self.md_font
                         size_hint_x: 1
                         line_color: 1, 1, 1, 1
                         md_bg_color: 1, 1, 1, 0

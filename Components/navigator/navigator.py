@@ -4,7 +4,6 @@ from kivy.properties import StringProperty, BooleanProperty, ListProperty, DictP
 from kivy.lang import Builder
 from kivymd.uix.card import MDSeparator
 from Components import path
-from kivymd.theming import ThemableBehavior
 from os import environ
 from kivy.animation import Animation
 
@@ -22,7 +21,7 @@ class BoxIconButton(MDBoxLayout):
         self.parent.parent.update_active_icon(button_instance)
 
 
-class Navigator(ThemableBehavior, MDBoxLayout):
+class Navigator(MDBoxLayout):
     icons = ListProperty()
     '''
     list of dictionaries containing the ``BoxIconButton`` properties and values

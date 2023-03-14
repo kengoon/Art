@@ -1,1 +1,97 @@
-<DesktopScreenView>
+<LoginDesktopScreenView>
+    MDBoxLayout:
+        padding: "10dp"
+        radius: "20dp"
+        Blur:
+            effects: (HorizontalBlurEffect(size=9), VerticalBlurEffect(size=6))
+            radius: "20dp"
+            FitImage:
+                source: "assets/images/1.jpg"
+        BoxLayout:
+            orientation: "vertical"
+            spacing: "10dp"
+            MDLabel:
+                text: "Not a member? [b][color=2196F3]Register Now[/color][/b]"
+                markup: True
+                font_style: "Caption"
+                halign: "right"
+                padding: "50dp", "10dp"
+                adaptive_height: True
+            RelativeLayout:
+                MDBoxLayout:
+                    spacing: "30dp"
+                    pos_hint: {"center": [.5, .5]}
+                    size_hint_x: .5
+                    orientation: "vertical"
+                    adaptive_height: True
+                    MDLabel:
+                        text:
+                            f"[b][size={int(sp(30))}]Hello Again![/b][/size]\n\n"\
+                            "Welcome back you've been missed!"
+                        markup: True
+                        halign: "center"
+                        font_size: "13sp"
+                        adaptive_height: True
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        adaptive_height: True
+                        spacing: "10dp"
+                        TextField:
+                            radius: "10dp"
+                            hint_text: "Enter username"
+                        TextField:
+                            radius: "10dp"
+                            hint_text: "Password"
+                            button_icon: "eye"
+                        MDTextButton:
+                            text: "Recover Password"
+                            bold: True
+                            color: 0, 0, 0, .5
+                            pos_hint: {"right": 1}
+                    RaisedButton:
+                        text: "Sign In"
+                        size_hint_x: 1
+                        label_padding: "20dp", "20dp"
+                        radius: "10dp"
+                    MDBoxLayout:
+                        adaptive_height: True
+                        spacing: "10dp"
+                        padding: "10dp", 0
+                        Separator:
+                            colors: [[1, 1, 1, 0], [1, 1, 1, 1]]
+                        MDLabel:
+                            text: "Or continue with"
+                            adaptive_size: True
+                            font_style: "Caption"
+                            halign: "center"
+                        Separator:
+                            colors: [[1, 1, 1, 1], [1, 1, 1, 0]]
+                    MDBoxLayout:
+                        adaptive_height: True
+                        spacing: "30dp"
+                        padding: "10dp", 0
+                        OutlineIconButton:
+                            icon: "google"
+                            size_hint_x: 1
+                            line_color: 1, 1, 1, 1
+                            md_bg_color: 1, 1, 1, 0
+                            hover_elevate: True
+                            icon_color: "red"
+                            theme_icon_color: "Custom"
+                            font_style: self.md_font
+                        OutlineIconButton:
+                            icon: "apple"
+                            size_hint_x: 1
+                            line_color: 1, 1, 1, 1
+                            md_bg_color: 1, 1, 1, 0
+                            hover_elevate: True
+                            font_style: self.md_font
+                        OutlineIconButton:
+                            icon: "facebook"
+                            size_hint_x: 1
+                            line_color: 1, 1, 1, 1
+                            md_bg_color: 1, 1, 1, 0
+                            hover_elevate: True
+                            icon_color: "blue"
+                            theme_icon_color: "Custom"
+                            font_style: self.md_font
