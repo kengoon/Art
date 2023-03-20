@@ -3,7 +3,7 @@
         padding: "10dp"
         radius: "20dp"
         Blur:
-            effects: (HorizontalBlurEffect(size=9), VerticalBlurEffect(size=6))
+            blur_size: 9, 6
             radius: "20dp"
             FitImage:
                 source: "assets/images/1.jpg"
@@ -53,6 +53,7 @@
                     size_hint_x: 1
                     label_padding: "20dp", "20dp"
                     radius: "10dp"
+                    on_release: app.add_screen("home screen")
                 MDBoxLayout:
                     adaptive_height: True
                     spacing: "10dp"

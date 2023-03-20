@@ -1,11 +1,8 @@
 <ImageFrame>:
     padding: "20dp", "20dp"
     MDCard:
-        radius: "20dp"
-        md_bg_color: 0, 0, 0, .7
+        radius: root.radius
         elevation: 1
-        # shadow_offset: 0, 0
-        #shadow_softness: 30
         RelativeLayout:
             FitImage:
                 id: source
@@ -17,7 +14,7 @@
                 pos_hint: {"top": 1}
                 spacing: "10dp"
                 OutlineImageButton:
-                    source: "assets/1.jpg"
+                    source: root.artist_image
                     radius: "15dp"
                     elevation: 1
                 MDLabel:
@@ -34,6 +31,8 @@
                 spacing: "40dp"
                 md_bg_color: 0, 0, 0, .5
                 radius: 0, 0, "20dp", "20dp"
+                disabled: root.no_comments_likes
+                opacity: 0 if self.disabled else 1
                 MDBoxLayout:
                     adaptive_height: True
                     spacing: "5dp"
@@ -66,7 +65,7 @@
 
 
 <ImageCard>:
-    padding: "20dp", "20dp", "10dp", "20dp"
+    padding: "20dp", "20dp", "20dp", "20dp"
     orientation: "vertical"
     spacing: "5dp"
     StencilCard:
@@ -74,16 +73,6 @@
         RelativeLayout:
             FitImage:
                 source: root.source
-            # MDWidget:
-            #     md_bg_color: 0, 0, 0, .6
-            # MDLabel:
-            #     text: root.text
-            #     color: 1, 1, 1, 1
-            #     halign: "center"
-            #     adaptive_height: True
-            #     shorten: True
-            #     shorten_from: "right"
-            #     padding: "10dp", "10dp"
             MDLabel:
                 text: root.name
                 adaptive_height: True
@@ -92,18 +81,6 @@
                 shorten_from: "right"
                 color: 1, 1, 1, 1
                 padding: "10dp", "10dp"
-#    MDLabel:
-#        text: root.name
-#        adaptive_height: True
-#        halign: "center"
-#        shorten: True
-#        shorten_from: "right"
-#    MDLabel:
-#        text: root.date
-#        adaptive_height: True
-#        halign: "center"
-#        font_style: "Caption"
-#        color: 0, 0, 0, .3
 
 
 <TextFrame>:
@@ -130,3 +107,142 @@
             theme_text_color: "Custom"
             text_color: 1, 1, 1, 1
             pos_hint: {"center_y": .5}
+
+<FitFrame>:
+    FitImage:
+        source: root.frame
+    MDBoxLayout:
+        pos_hint: {"top": 1}
+        size_hint_y: None
+        height: "200dp"
+        canvas:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                texture: Gradient.vertical([.2, .2, .2, 0], [.2, .2, .2, .5])
+    MDBoxLayout:
+        size_hint_y: None
+        height: "300dp"
+        canvas:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                texture: Gradient.vertical([.2, .2, .2, .9], [.2, .2, .2, 0])
+    AnchorLayout:
+        anchor_y: "center"
+        anchor_x: "right"
+        MDBoxLayout:
+            adaptive_size: True
+            orientation: "vertical"
+            spacing: "20dp"
+            padding: "10dp"
+            ReactionButton:
+                icon: "heart-f"
+                icon_bg_color: .2, .2, .2, .6
+                icon_size: "20sp"
+                count: "120K"
+            ReactionButton:
+                icon: "chat-centered-text-f"
+                icon_bg_color: .2, .2, .2, .6
+                icon_size: "20sp"
+                count: "0"
+            MDIconButton:
+                icon: "share-network-f"
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+                md_bg_color: .2, .2, .2, .6
+                icon_size: "20sp"
+    MDBoxLayout:
+        adaptive_height: True
+        padding: "10dp"
+        pos_hint: {"top": 1}
+        MDIconButton:
+            icon: "dots-three-b"
+            theme_icon_color: "Custom"
+            icon_color: 1, 1, 1, 1
+            md_bg_color: .2, .2, .2, .6
+            icon_size: "20sp"
+            pos_hint: {"center_y": .5}
+        MDBoxLayout:
+            adaptive_height: True
+            orientation: "vertical"
+            pos_hint: {"center_y": .5}
+            MDBoxLayout:
+                md_bg_color: .2, .2, .2, .6
+                adaptive_size: True
+                radius: self.height/2
+                pos_hint: {"center_x": .5}
+                MDTextButton:
+                    padding: "10dp", "10dp"
+                    text: "Following"
+                    color: 1, 1, 1, 1
+                    font_style: "Caption"
+                MDCard:
+                    radius: self.height/2
+                    size_hint: None, None
+                    size: self.minimum_size
+                    elevation: 1
+                    md_bg_color: app.theme_cls.primary_color
+                    MDLabel:
+                        text: "For You"
+                        color: 1, 1, 1, 1
+                        adaptive_size: True
+                        padding: "20dp", "10dp"
+                        font_style: "Caption"
+        MDIconButton:
+            icon: "magnifying-glass"
+            theme_icon_color: "Custom"
+            icon_color: 1, 1, 1, 1
+            md_bg_color: .2, .2, .2, .6
+            icon_size: "20sp"
+            pos_hint: {"center_y": .5}
+
+
+    MDBoxLayout:
+        size_hint: None, None
+        height: "60dp"
+        width: root.width - dp(60)
+        y: root.text_content_y
+        padding: "20dp", 0
+        spacing: "10dp"
+        AnchorLayout:
+            anchor_y: "top"
+            size_hint_x: None
+            width: "40dp"
+            MDBoxLayout:
+                adaptive_size: True
+                line_color: root.tiny_image_line_color
+                line_width: 2
+                radius: "20dp"
+                FitImage:
+                    size_hint: None, None
+                    size: "40dp", "40dp"
+                    radius: "20dp"
+                    source: root.tiny_image
+        MDBoxLayout:
+            id: text_box
+            orientation: "vertical"
+            MDLabel:
+#                font_style: "H6"
+                text: root.title
+                font_size: "18sp"
+                bold: True
+                shorten: True
+                shorten_from: "right"
+                color: 1, 1, 1, 1
+            MDLabel:
+                id: content_lbl
+                text: root.text
+                font_style: "Caption"
+                color: .7, .7, .7, 1
+                on_width: root.shorten_text()
+
+
+
+
+
+

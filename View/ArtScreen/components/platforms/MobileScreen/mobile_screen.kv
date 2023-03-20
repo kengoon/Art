@@ -1,1 +1,18 @@
-<MobileScreenView>
+<ArtMobileScreenView>
+    RealRecycleView:
+        id: rv
+        viewclass: "FitFrame"
+        do_scroll_x: False
+        effect_cls: HardStopDampedScrollEffect
+        swipe_direction: "vertical"
+        bar_width: 0
+        do_swipe: True
+        on_swipe_up: win.pop_bnb()
+        on_swipe_down: win.push_bnb()
+        RecycleBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: self.minimum_height
+            default_size_hint: 1, None
+            default_size: 0, self.parent.height
+

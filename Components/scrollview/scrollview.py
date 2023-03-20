@@ -2,13 +2,20 @@ from kivy.uix.recycleview import RecycleView
 from kivy.clock import Clock
 from kivy.properties import OptionProperty, BooleanProperty, ObjectProperty
 from kivy.animation import Animation
+from kivymd.uix.behaviors import StencilBehavior
+
 from Components.effects import LowerScrollEffect, LowerDampedScrollEffect
 
 
-class RealRecycleView(RecycleView):
+class RealRecycleView(RecycleView, StencilBehavior):
     do_swipe = BooleanProperty(False)
     swipe_direction = OptionProperty("horizontal", options=["horizontal", "vertical"], allownone=False)
     effect_cls = ObjectProperty(LowerDampedScrollEffect)
+
+    _swipe_right_listeners = []
+    _swipe_left_listeners = []
+    _swipe_down_listeners = []
+    _swipe_up_listeners = []
 
     def __init__(self, **kwargs):
         self.register_event_type('on_real_scroll_stop')  # type: ignore
@@ -26,6 +33,7 @@ class RealRecycleView(RecycleView):
         self.clock = None
         self._start_touch = None
         self._is_touch_move = False
+        Clock.schedule_once(self.on_data)
 
     def on_scroll_move(self, touch):
         if supra := super().on_scroll_move(touch):
@@ -79,7 +87,9 @@ class RealRecycleView(RecycleView):
             self.scroll_index -= 1
             child_height = self.children[0].default_height
             scroll = self.convert_distance_to_scroll(0, child_height * self.scroll_index)[1]
-            Animation(scroll_y=max(scroll, 0.0), t='out_quad', d=.5).start(self)
+            anim = Animation(scroll_y=max(scroll, 0.0), t='out_quad', d=.3)
+            anim.bind(on_complete=lambda *_: self.dispatch_listeners(direction="up"))
+            anim.start(self)
 
     def swipe_down(self):
         if not self.children:
@@ -88,7 +98,9 @@ class RealRecycleView(RecycleView):
             self.scroll_index += 1
             child_height = self.children[0].default_height
             scroll = self.convert_distance_to_scroll(0, child_height * self.scroll_index)[1]
-            Animation(scroll_y=min(scroll, 1.0), t='out_quad', d=.5).start(self)
+            anim = Animation(scroll_y=min(scroll, 1.0), t='out_quad', d=.3)
+            anim.bind(on_complete=lambda *_: self.dispatch_listeners(direction="down"))
+            anim.start(self)
 
     def swipe_left(self):
         if not self.children:
@@ -97,7 +109,9 @@ class RealRecycleView(RecycleView):
             self.scroll_index += 1
             child_width = self.children[0].default_width
             scroll = self.convert_distance_to_scroll(child_width * self.scroll_index, 0)[0]
-            Animation(scroll_x=min(scroll, 1.0), t='out_quad', d=.5).start(self)
+            anim = Animation(scroll_x=min(scroll, 1.0), t='out_quad', d=.3)
+            anim.bind(on_complete=lambda *_: self.dispatch_listeners(direction="left"))
+            anim.start(self)
 
     def swipe_right(self):
         if not self.children:
@@ -106,7 +120,9 @@ class RealRecycleView(RecycleView):
             self.scroll_index -= 1
             child_width = self.children[0].default_width
             scroll = self.convert_distance_to_scroll(child_width * self.scroll_index, 0)[0]
-            Animation(scroll_x=max(scroll, 0.0), t='out_quad', d=.5).start(self)
+            anim = Animation(scroll_x=max(scroll, 0.0), t='out_quad', d=.3)
+            anim.bind(on_complete=lambda *_: self.dispatch_listeners(direction="right"))
+            anim.start(self)
 
     def on_scroll_y(self, *_):
         self._scrolling = True
@@ -116,6 +132,33 @@ class RealRecycleView(RecycleView):
             self.clock.cancel()
             self.dispatch("on_real_scroll_stop")
         self._scrolling = False
+
+    @classmethod
+    def register_swipe_listener(cls, **kwargs):
+        if func := kwargs.get("up"):
+            cls._swipe_up_listeners.append(func)
+        if func := kwargs.get("down"):
+            cls._swipe_down_listeners.append(func)
+        if func := kwargs.get("left"):
+            cls._swipe_left_listeners.append(func)
+        if func := kwargs.get("right"):
+            cls._swipe_right_listeners.append(func)
+        else:
+            raise AttributeError(f"Unknown argument. Argument must be any or both of [up, down, right, left]")
+
+    def dispatch_listeners(self, direction):
+        if direction == "up":
+            for func in self._swipe_up_listeners:
+                func()
+        elif direction == "down":
+            for func in self._swipe_down_listeners:
+                func()
+        elif direction == "left":
+            for func in self._swipe_left_listeners:
+                func()
+        else:
+            for func in self._swipe_right_listeners:
+                func()
 
     def on_real_scroll_stop(self):
         pass

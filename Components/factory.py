@@ -31,3 +31,6 @@ def register_factory():
     register("BottomNavigationButton", module="Components.button")
     register("RealRecycleView", module="Components.scrollview")
     register("TextFrame", module="Components.frame")
+    register("HoverRoundIconButton", module="Components.button")
+    register("FitFrame", module="Components.frame")
+    register("ReactionButton", module="Components.button")

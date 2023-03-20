@@ -17,6 +17,8 @@ from kivy.metrics import dp
 from kivy.uix.modalview import ModalView
 from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
+from kivymd.uix.transition import MDFadeSlideTransition
+
 from View.screens import screens
 from Model.database import DataBase
 from Components.factory import register_factory
@@ -36,7 +38,7 @@ class Art(MDApp):
         self.theme_cls.primary_palette = "Brown"
         self.theme_cls.primary_hue = "A700"
         self.theme_cls.material_style = "M3"
-        self.root = MDScreenManager()
+        self.root = MDScreenManager(transition=MDFadeSlideTransition())
         self.database = DataBase()
         spinner = Factory.MDSpinner(line_width=dp(1.5))
         self.dialog = ModalView(
@@ -58,6 +60,8 @@ class Art(MDApp):
         if not self.root.has_screen(name_screen):
             self.dialog.open()
             Clock.schedule_once(lambda _: self.load_screen(name_screen, switch, first), 1)
+        elif switch:
+            self.root.current = name_screen
 
     def load_screen(self, name_screen, switch, first):
         Builder.load_file(screens[name_screen]["kv"])
@@ -72,32 +76,40 @@ class Art(MDApp):
             self.dialog.dismiss()
 
     def on_start(self):
-        win.create_bnb(icons=[
-            {
-                "icon": "house-f",
-                "icon_variant": "house",
-                "active": True,
-                "on_release": print
-            },
-            {
-                "icon": "image-f",
-                "icon_variant": "image",
-                "on_release": print
-            },
-            {
-                "icon": "briefcase-simple-f",
-                "icon_variant": "briefcase-simple",
-                "on_release": print
-            },
-            {
-                "icon": "user-f",
-                "icon_variant": "user",
-                "on_release": print
-            },
-        ], icon="squares-four")
+        win.create_bnb(
+            icons=[
+                {
+                    "icon": "house-f",
+                    "icon_variant": "house",
+                    "active": True,
+                    "on_release": lambda _: self.add_screen("home screen")
+                },
+                {
+                    "icon": "image-f",
+                    "icon_variant": "image",
+                    "on_release": lambda _: self.add_screen("art screen")
+                },
+                {
+                    "icon": "briefcase-simple-f",
+                    "icon_variant": "briefcase-simple",
+                    "on_release": print
+                },
+                {
+                    "icon": "user-f",
+                    "icon_variant": "user",
+                    "on_release": print
+                },
+            ],
+            icon="squares-four",
+            md_bg_color=[.2, .2, .2, .8],
+            shadow_color=[0, 0, 0, 0],
+            line_color=[.35, .35, .35, 1],
+            thick_icons=True
+
+        )
 
     # def on_stop(self):
-    #     self.root.children[0].children[0].export_to_png("screenshot.png")
+    #     self.root.children[0].children[0].export_to_png("art6.png")
 
 
 Art().run()

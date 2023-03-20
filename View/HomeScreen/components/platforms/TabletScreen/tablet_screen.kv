@@ -1,4 +1,88 @@
 <HomeTabletScreenView>
-    Label:
-        text: "hello"
-        color: "black"
+    MDBoxLayout:
+        MDBoxLayout:
+            size_hint_x: .5
+            AnchorLayout:
+                anchor_y: "top"
+                MDBoxLayout:
+                    adaptive_height: True
+                    padding: "10dp", "50dp"
+                    orientation: "vertical"
+                    spacing: "20dp"
+                    HoverRoundIconButton:
+                        text: "Home"
+                        font_style: "H5"
+                        icon: "house"
+                        icon_variant: "house-f"
+                    HoverRoundIconButton:
+                        text: "Arts"
+                        font_style: "H5"
+                        icon: "image"
+                        icon_variant: "image-f"
+                    HoverRoundIconButton:
+                        text: "Collection"
+                        font_style: "H5"
+                        icon: "briefcase-simple"
+                        icon_variant: "briefcase-simple-f"
+                    HoverRoundIconButton:
+                        text: "Profile"
+                        font_style: "H5"
+                        icon: "user"
+                        icon_variant: "user-f"
+        MDSeparator:
+            orientation: "vertical"
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "20dp"
+            MDBoxLayout:
+                adaptive_height: True
+                padding: "20dp", "20dp", "20dp", 0
+                MDLabel:
+                    text: "Artists"
+                    font_size: "18sp"
+                    adaptive_height: True
+            MDSeparator
+            RecycleView:
+                id: artist_rv
+                key_viewclass: "vc"
+                do_scroll_y: False
+                size_hint_y: None
+                height: max(dp(48) - sp(24), 0) + sp(24)
+                bar_width: 0
+                RecycleBoxLayout:
+                    size_hint_x: None
+                    width: self.minimum_width
+                    spacing: "10dp"
+                    padding: "20dp", 0, 0, 0
+                    default_size_hint: None, 1
+                    default_size: max(dp(48) - sp(24), 0) + sp(24), 0
+            BoxLayout:
+                #padding: "20dp", 0
+                orientation: "vertical"
+                spacing: "10dp"
+                MDBoxLayout:
+                    adaptive_height: True
+                    padding: "20dp", 0
+                    MDLabel:
+                        text: "Arts"
+                        font_style: "H6"
+                        adaptive_height: True
+                    IconButton:
+                        icon: "magnifying-glass-l"
+                RealRecycleView:
+                    id: art_rv
+                    viewclass: "ImageFrame"
+                    do_scroll_x: False
+                    swipe_direction: "vertical"
+                    bar_width: 0
+                    RecycleBoxLayout:
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        default_size_hint: 1, None
+                        default_size: 0, self.parent.height - (0.1 * self.parent.height)
+        MDSeparator:
+            orientation: "vertical"
+        MDBoxLayout:
+            size_hint_x: .5
+

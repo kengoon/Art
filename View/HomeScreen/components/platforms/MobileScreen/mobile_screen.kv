@@ -45,8 +45,8 @@
                 do_scroll_x: False
                 swipe_direction: "vertical"
                 bar_width: 0
-                on_swipe_up: win.pop_bnb()
-                on_swipe_down: win.push_bnb()
+                on_swipe_up: win.pop_bnb(); print("pop")
+                on_swipe_down: win.push_bnb(); print("push")
                 RecycleGridLayout:
                     cols: 2
                     size_hint_y: None

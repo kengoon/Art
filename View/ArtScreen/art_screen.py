@@ -1,7 +1,7 @@
 from kivymd.uix.responsivelayout import MDResponsiveLayout
 
 from View.ArtScreen.components import (
-    MobileScreenView,
+    ArtMobileScreenView,
     TabletScreenView,
     DesktopScreenView,
 )
@@ -11,9 +11,9 @@ from View.base_screen import BaseScreenView
 class ArtScreenView(MDResponsiveLayout, BaseScreenView):
     def __init__(self, **kw):
         super().__init__(**kw)
-        self.mobile_view = MobileScreenView()
-        self.tablet_view = TabletScreenView()
-        self.desktop_view = DesktopScreenView()
+        self.mobile_view = ArtMobileScreenView
+        self.tablet_view = TabletScreenView
+        self.desktop_view = DesktopScreenView
 
     def model_is_changed(self) -> None:
         """
